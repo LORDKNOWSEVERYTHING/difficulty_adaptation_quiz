@@ -1,0 +1,411 @@
+score=[]
+from tkinter import *
+def easy():
+    def submite():
+        ans=easyv.get()
+        if ans=='Y': 
+            score.append(1)
+            n.append(1)
+        win.destroy()
+    n=[0]
+    win=Tk()
+    win.geometry('500x500')
+    Label(win,text='EASY : ').pack(pady=10)
+    easyv=StringVar()
+    Entry(win,textvariable=easyv).pack(pady=10)
+    Button(win,text='SUBMIT',command=submite).pack(pady=10)
+    win.mainloop()
+    return n[-1]
+def medium():
+    def submitm():
+        ans=mediumv.get()
+        if ans=='Y': 
+            score.append(1)
+            n.append(1)
+        win.destroy()
+    n=[0]
+    win=Tk()
+    win.geometry('500x500')
+    Label(win,text='MEDIUM : ').pack(pady=10)
+    mediumv=StringVar()
+    Entry(win,textvariable=mediumv).pack(pady=10)
+    Button(win,text='SUBMIT',command=submitm).pack(pady=10)
+    win.mainloop()
+    return n[-1]
+def hard():
+    def submith():
+        ans=hardv.get()
+        if ans=='Y':
+            score.append(1)
+            n.append(1)
+        win.destroy()
+    n=[0]
+    win=Tk()
+    win.geometry('500x500')
+    Label(win,text='HARD : ').pack(pady=10)
+    hardv=StringVar()
+    Entry(win,textvariable=hardv).pack(pady=10)
+    Button(win,text='SUBMIT',command=submith).pack(pady=10)
+    win.mainloop()
+    return n[-1]
+def begin():
+    check.append(1)
+    win.destroy()
+check=[0]
+win=Tk()
+win.geometry('500x500')
+Label(win,text='QUIZ CANNOT BE EXITED ONCE STARTED.').pack(pady=10)
+Label(win,text='YOU CAN EXIT NOW IF YOU WANT TO.').pack(pady=10)
+Button(win,text='BEGIN',command=begin).pack(pady=10)
+Button(win,text='QUIT',command=win.destroy).pack(pady=10)
+win.mainloop()
+if check[-1]:
+    one=medium()
+    two=medium()
+    if one and two:
+        three=hard()
+        four=hard()
+        if three and four:
+            five=hard()
+            six=hard()
+            if five and six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            elif five or six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            else:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+        elif three or four:
+            five=hard()
+            six=hard()
+            if five and six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            elif five or six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            else:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+        else:
+            five=medium()
+            six=medium()
+            if five and six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            elif five or six:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            else:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                elif seven or eight:
+                    nine=easy()
+                    ten=easy()
+                else:
+                    nine=easy()
+                    ten=easy()
+    elif one or two:
+        three=medium()
+        four=medium()
+        if three and four:
+            five=hard()
+            six=hard()
+            if five and six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            elif five or six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            else:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+        elif three or four:
+            five=medium()
+            six=medium()
+            if five and six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            elif five or six:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            else:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                elif seven or eight:
+                    nine=easy()
+                    ten=easy()
+                else:
+                    nine=easy()
+                    ten=easy()
+        else:
+            five=easy()
+            six=easy()
+            if five and six:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            elif five or six:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            else:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+    else:
+        three=easy()
+        four=easy()
+        if three and four:
+            five=medium()
+            six=medium()
+            if five and six:
+                seven=hard()
+                eight=hard()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=hard()
+                    ten=hard()
+                else:
+                    nine=medium()
+                    ten=medium()
+            elif five or six:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            else:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+        elif three or four:
+            five=easy()
+            six=easy()
+            if five and six:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            elif five or six:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            else:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+        else:
+            five=easy()
+            six=easy()
+            if five and six:
+                seven=medium()
+                eight=medium()
+                if seven and eight:
+                    nine=hard()
+                    ten=hard()
+                elif seven or eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            elif five or six:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+            else:
+                seven=easy()
+                eight=easy()
+                if seven and eight:
+                    nine=medium()
+                    ten=medium()
+                else:
+                    nine=easy()
+                    ten=easy()
+else:
+    pass
+win2=Tk()
+win2.geometry('500x500')
+score=str(sum(score))
+Label(win2,text='TOTAL SCORE : '+score).pack(pady=10)
+Button(win2,text='EXIT',command=win2.destroy).pack(pady=10)
+win2.mainloop()
