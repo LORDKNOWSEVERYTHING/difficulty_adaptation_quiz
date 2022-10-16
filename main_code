@@ -481,7 +481,7 @@ if check[-1]:
         while j<len(questions_attempted) and toquit[-1]:
             i=questions_attempted[j]
             win=Tk()
-            win.title('QUIZ ANALYSIS')
+            win.title('PAPER ANALYSIS')
             toquitl=[0]
             win.geometry('500x560')
             num=j+1
