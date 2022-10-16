@@ -1,16 +1,45 @@
-score=[]
+questions=[('EASY1',1,'Y'),('MEDIUM1',2,'Y'),('HARD1',3,'Y'),
+           ('EASY2',1,'Y'),('MEDIUM2',2,'Y'),('HARD2',3,'Y'),
+           ('EASY3',1,'Y'),('MEDIUM3',2,'Y'),('HARD3',3,'Y'),
+           ('EASY4',1,'Y'),('MEDIUM4',2,'Y'),('HARD4',3,'Y'),
+           ('EASY5',1,'Y'),('MEDIUM5',2,'Y'),('HARD5',3,'Y'),
+           ('EASY6',1,'Y'),('MEDIUM6',2,'Y'),('HARD6',3,'Y'),
+           ('EASY7',1,'Y'),('MEDIUM7',2,'Y'),('HARD7',3,'Y'),
+           ('EASY8',1,'Y'),('MEDIUM8',2,'Y'),('HARD8',3,'Y'),
+           ('EASY9',1,'Y'),('MEDIUM9',2,'Y'),('HARD9',3,'Y'),
+           ('EASY10',1,'Y'),('MEDIUM10',2,'Y'),('HARD10',3,'Y')]
+questions_attempted=[]
+esy=[]
+med=[]
+hrd=[]
+user_score_e=[]
+user_score_m=[]
+user_score_h=[]
+for i in questions:
+    if i[1]==1:
+        esy.append([i[0]]+[i[2]])
+    elif i[1]==2:
+        med.append([i[0]]+[i[2]])
+    else:
+        hrd.append([i[0]]+[i[2]])
 from tkinter import *
 def easy():
     def submite():
         ans=easyv.get()
-        if ans=='Y': 
-            score.append(1)
+        questions_attempted[-1]+=[ans]
+        if ans==que[1]: 
+            user_score_e.append(1)
             n.append(1)
+        else:
+            user_score_e.append(0)
         win.destroy()
     n=[0]
     win=Tk()
-    win.geometry('500x500')
-    Label(win,text='EASY : ').pack(pady=10)
+    win.title('QUIZ')
+    win.geometry('500x560')
+    que=esy[0]
+    questions_attempted.append(esy.pop(0))
+    Label(win,text=que[0]).pack(pady=10)
     easyv=StringVar()
     Entry(win,textvariable=easyv).pack(pady=10)
     Button(win,text='SUBMIT',command=submite).pack(pady=10)
@@ -19,14 +48,20 @@ def easy():
 def medium():
     def submitm():
         ans=mediumv.get()
-        if ans=='Y': 
-            score.append(1)
+        questions_attempted[-1]+=[ans]
+        if ans==que[1]: 
+            user_score_m.append(1)
             n.append(1)
+        else:
+            user_score_m.append(0)
         win.destroy()
     n=[0]
     win=Tk()
-    win.geometry('500x500')
-    Label(win,text='MEDIUM : ').pack(pady=10)
+    win.title('QUIZ')
+    win.geometry('500x560')
+    que=med[0]
+    questions_attempted.append(med.pop(0))
+    Label(win,text=que[0]).pack(pady=10)
     mediumv=StringVar()
     Entry(win,textvariable=mediumv).pack(pady=10)
     Button(win,text='SUBMIT',command=submitm).pack(pady=10)
@@ -35,14 +70,20 @@ def medium():
 def hard():
     def submith():
         ans=hardv.get()
-        if ans=='Y':
-            score.append(1)
+        questions_attempted[-1]+=[ans]
+        if ans==que[1]:
+            user_score_h.append(1)
             n.append(1)
+        else:
+            user_score_h.append(0)
         win.destroy()
     n=[0]
     win=Tk()
-    win.geometry('500x500')
-    Label(win,text='HARD : ').pack(pady=10)
+    win.title('QUIZ')
+    win.geometry('500x560')
+    que=hrd[0]
+    questions_attempted.append(hrd.pop(0))
+    Label(win,text=que[0]).pack(pady=10)
     hardv=StringVar()
     Entry(win,textvariable=hardv).pack(pady=10)
     Button(win,text='SUBMIT',command=submith).pack(pady=10)
@@ -53,7 +94,8 @@ def begin():
     win.destroy()
 check=[0]
 win=Tk()
-win.geometry('500x500')
+win.title('QUIZ')
+win.geometry('500x560')
 Label(win,text='QUIZ CANNOT BE EXITED ONCE STARTED.').pack(pady=10)
 Label(win,text='YOU CAN EXIT NOW IF YOU WANT TO.').pack(pady=10)
 Button(win,text='BEGIN',command=begin).pack(pady=10)
@@ -401,11 +443,75 @@ if check[-1]:
                 else:
                     nine=easy()
                     ten=easy()
+    win2=Tk()
+    win2.title('RESULT')
+    win2.geometry('500x560')
+    Label(win2,text='THANKYOU FOR TAKING THIS QUIZ.\n YOUR RESULTS ARE AS FOLLOWS : ').pack(pady=10)
+    esyatt=0
+    medatt=0
+    hrdatt=0
+    esyc=0
+    medc=0
+    hrdc=0
+    esyi=0
+    medi=0
+    hrdi=0
+    for i in user_score_e:
+        esyatt+=1
+        if i:
+            esyc+=1
+        else:
+            esyi+=1
+    for i in user_score_m:
+        medatt+=1
+        if i:
+            medc+=1
+        else:
+            medi+=1
+    for i in user_score_h:
+        hrdatt+=1
+        if i:
+            hrdc+=1
+        else:
+            hrdi+=1
+    def analyse():
+        win2.destroy()
+        toquit=[1]
+        j=0
+        while j<len(questions_attempted) and toquit[-1]:
+            i=questions_attempted[j]
+            win=Tk()
+            win.title('QUIZ ANALYSIS')
+            toquitl=[0]
+            win.geometry('500x560')
+            num=j+1
+            Label(win,text='QUESTION '+str(num)+'.').pack(pady=10)
+            Label(win,text='QUESTION : ').pack(pady=10)
+            Label(win,text=i[0]).pack(pady=10)
+            Label(win,text='CORRECT ANSWER : ').pack(pady=10)
+            Label(win,text=i[1]).pack(pady=10)
+            Label(win,text='YOUR ANSWER : ').pack(pady=10)
+            Label(win,text=i[2]).pack(pady=10)
+            Button(win,text='NEXT',command=win.destroy).pack(pady=10)
+            def toquitf():
+                win.destroy()
+                toquit.append(0)
+            Button(win,text='QUIT',command=toquitf).pack(pady=10)
+            win.mainloop()
+            j+=1
+    Label(win2,text='EASY ATTEMPTED : '+str(esyatt)).pack(pady=10)
+    Label(win2,text='EASY CORRECT : '+str(esyc)).pack(pady=10)
+    Label(win2,text='EASY INCORRECT : '+str(esyi)).pack(pady=10)
+    Label(win2,text='MEDIUM ATTEMPTED : '+str(medatt)).pack(pady=10)
+    Label(win2,text='MEDIUM CORRECT : '+str(medc)).pack(pady=10)
+    Label(win2,text='MEDIUM INCORRECT : '+str(medi)).pack(pady=10)
+    Label(win2,text='HARD ATTEMPTED : '+str(hrdatt)).pack(pady=10)
+    Label(win2,text='HARD CORRECT : '+str(hrdc)).pack(pady=10)
+    Label(win2,text='HARD INCORRECT : '+str(hrdi)).pack(pady=10)
+    score=(1*esyc)+(2*medc)+(3*hrdc)
+    Label(win2,text='TOTAL SCORE : '+str(score)).pack(pady=10)
+    Button(win2,text='OK',command=win2.destroy).pack(pady=10)
+    Button(win2,text='PAPER ANALYSIS',command=analyse).pack(pady=10)
+    win2.mainloop()
 else:
     pass
-win2=Tk()
-win2.geometry('500x500')
-score=str(sum(score))
-Label(win2,text='TOTAL SCORE : '+score).pack(pady=10)
-Button(win2,text='EXIT',command=win2.destroy).pack(pady=10)
-win2.mainloop()
